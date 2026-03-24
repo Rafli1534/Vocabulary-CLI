@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\6461\workspace\my_works\cpp\Vocabulary\test.cpp(12,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\6461\workspace\my_works\cpp\Vocabulary\test.cpp(82,8): warning C4101: ready: неиспользованная локальная переменная
+  Vocabulary.vcxproj -> C:\Users\6461\workspace\my_works\cpp\Vocabulary\x64\Debug\Vocabulary.exe

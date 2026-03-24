@@ -1,0 +1,8 @@
+UA: "Око". EN: "Eye". Date: 22.03.2026
+UA: "Тато". EN: "Dad". Date: 23.03.2026
+UA: "Зупинятись". EN: "to Break Up". Date: 24.03.2026
+UA: "Фільм". EN: "Movie". Date: 23.03.2026
+UA: "Стоп". EN: "Stop". Date: 24.03.2026
+UA: "Дата". EN: "Date". Date: 24.03.2026
+UA: "Данні". EN: "Data". Date: 24.03.2026
+UA: "Інтернет". EN: "Wi-Fi". Date: 24.03.2026
