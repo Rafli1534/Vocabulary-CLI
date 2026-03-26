@@ -6,3 +6,4 @@ UA: "Стоп". EN: "Stop". Date: 24.03.2026
 UA: "Дата". EN: "Date". Date: 24.03.2026
 UA: "Данні". EN: "Data". Date: 24.03.2026
 UA: "Інтернет". EN: "Wi-Fi". Date: 24.03.2026
+UA: "Слово". EN: "Word". Date: 25.03.2026

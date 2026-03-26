@@ -15,7 +15,6 @@ using namespace std;
 int main()
 {
 	system("chcp 65001>null"); 
-
 	char choice;
 	do {
 		cout << "Menu: \n"

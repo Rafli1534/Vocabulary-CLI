@@ -1,16 +1,16 @@
-# include <iostream> // to work with console
-# include <fstream>  // to work with files
-# include <string>   // to work with string
-# include <vector>   // to work with massives
-# include "main.h"   // to work with read.cpp
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <vector>
+# include "main.h"
 
-using namespace std; // to make code easier to write
+using namespace std; 
 
 struct Word {
 	string word;
 	string translation;
 	string date;
-}; // to know what info we need in translation
+};
 
 bool existsUA(const string& word);
 bool existsEN(const string& word);
@@ -18,7 +18,7 @@ bool existsEN(const string& word);
 int append() {
 	char proceed;
 	do {
-		vector <Word> arr;
+		vector <Word> vocabular;
 		ofstream file("Vocabulary.txt", ios::app);
 		if (!file) {
 			cout << "Error: some problems with file";
@@ -36,17 +36,16 @@ int append() {
 		getline(cin, data.word);
 		cout << "Write the translation in english: ";
 		getline(cin, data.translation);
-		cout << "Write the date of entering "
-			<< "(belive in ur prudence, "
-			<< "write like dd.MM.yyyy or kinda like this): ";
+		cout << "Write todays date\n"
+			<< "(write like dd.MM.yyyy or kinda like this): ";
 		cin >> data.date;
-		arr.push_back(data);
+		vocabular.push_back(data);
 
-		if (existsUA(data.word) && existsEN(data.translation)) {
+		if (existsUA(data.word) && existsEN(data.translation))
 			cout << "This word already exists" << endl;
-		}
+
 		else {
-			for (auto i : arr)
+			for (auto i : vocabular)
 				file << "UA: \""
 				<< i.word
 				<< "\". EN: \""
@@ -70,26 +69,20 @@ int append() {
 	return 0;
 }
 
-// to check is this word already exists in ua lang
 bool existsUA(const string& word) {
 	ifstream file("Vocabulary.txt");
 	string line;
-	while (getline(file, line)) {
-		if (line.find("UA: \"" + word + "\"") != string::npos) {
+	while (getline(file, line))
+		if (line.find("UA: \"" + word + "\"") != string::npos)
 			return true;
-		}
-	}
 	return false;
 }
 
-// to check is this word already exists in en lang
 bool existsEN(const string& word) {
 	ifstream file("Vocabulary.txt");
 	string line;
-	while (getline(file, line)) {
-		if (line.find("EN: \"" + word + "\"") != string::npos) {
+	while (getline(file, line))
+		if (line.find("EN: \"" + word + "\"") != string::npos)
 			return true;
-		}
-	}
 	return false;
 }
