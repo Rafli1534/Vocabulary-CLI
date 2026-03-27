@@ -26,12 +26,9 @@ int del() {
 
         bool found = false;
         while (getline(input, line)) {
-            if (line.find(word) == string::npos) {
+            if (line.find(word) == string::npos)
                 temp << line << endl;
-            }
-            else {
-                found = true;
-            }
+            else found = true;
         }
 
         input.close();
