@@ -33,7 +33,7 @@ int main()
 			case '1': read(); break;
 			case '2': append(); break;
 			case '3': search(); break;
-			  case '4': del(); break;
+			case '4': del(); break;
 			case '5': redact(); break;
 			case '6': test(); break;
 			default:
