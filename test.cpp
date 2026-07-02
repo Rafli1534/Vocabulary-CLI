@@ -6,96 +6,103 @@
 
 # include "main.h"
 
-using namespace std;
-
-void game() {
+void game() 
+{
     srand(time(nullptr));
-    ifstream file("Vocabulary.txt");
-    if (!file) {
-        cout << "Error: no such file";
+    std::ifstream file("Vocabulary.txt");
+    if (!file) 
+    {
+        std::cout << "Error: no such file";
         return;
     }
 
-    string line;
-    vector<string> entries;
-    cin.ignore();
-    while (getline(file, line))
+    std::string line;
+    std::vector<std::string> entries;
+    std::cin.ignore();
+    while (std::getline(file, line))
         if (!line.empty())
             entries.push_back(line);
 
     file.close();
 
-    if (entries.empty()) {
-        cout << "No words found!";
+    if (entries.empty()) 
+    {
+        std::cout << "No words found!";
         return;
     }
 
     int amount;
-    cout << "How many words u wanna test: ";
-    cin >> amount;
+    std::cout << "How many words u wanna test: ";
+    std::cin >> amount;
 
     int correct = 0, wrong = 0;
-    auto startPlayer = chrono::steady_clock::now();
+    auto startPlayer = std::chrono::steady_clock::now();
 
-    for (int i = 0; i < amount; ++i) {
+    for (int i = 0; i < amount; ++i) 
+    {
         int randin = rand() % entries.size();
-        string entry = entries[randin]; 
+        std::string entry = entries[randin];
 
         size_t posUA = entry.find("UA:");
         size_t endUA = entry.find('.', posUA);
-        string uaWord = entry.substr(posUA, endUA - posUA);
+        std::string uaWord = entry.substr(posUA, endUA - posUA);
 
-        cout << "\nTranslate this word -> " << uaWord << endl;
-        string answer;
+        std::cout << "\nTranslate this word -> " << uaWord << std::endl;
+        std::string answer;
         bool ok = false;
-        while (!ok) {
-            cout << "Your translation: ";
-            cin.ignore();
-            getline(cin, answer);
+        while (!ok) 
+        {
+            std::cout << "Your translation: ";
+            std::cin.ignore();
+            std::getline(std::cin, answer);
 
-            if (entry.find(answer) != string::npos) {
-                cout << "Correct!\n";
+            if (entry.find(answer) != std::string::npos) 
+            {
+                std::cout << "Correct!\n";
                 correct++;
                 ok = true;
             }
-            else {
-                cout << "Wrong, try again!\n";
+            else 
+            {
+                std::cout << "Wrong, try again!\n";
                 wrong++;
             }
         }
     }
 
-    auto endPlayer = chrono::steady_clock::now();//закінчення часу
-    chrono::duration<double> elapsedPlayer = endPlayer - startPlayer;
+    auto endPlayer = std::chrono::steady_clock::now();//закінчення часу
+    std::chrono::duration<double> elapsedPlayer = endPlayer - startPlayer;
     double timePlayer = elapsedPlayer.count();
 
-    cout << "\nGame over!\n";
-    cout << "Correct answers: " << correct << endl;
-    cout << "Wrong attempts: " << wrong << endl;
-    cout << "Timer user: " << timePlayer << " sec." << endl;
+    std::cout << "\nGame over!\n";
+    std::cout << "Correct answers: " << correct << std::endl;
+    std::cout << "Wrong attempts: " << wrong << std::endl;
+    std::cout << "Timer user: " << timePlayer << " sec." << std::endl;
 }
 
-int test() {
-    cin.ignore();
+int test() 
+{
+    std::cin.ignore();
 	char proceed;
-	do {
+	do 
+    {
 		char ready;
-		cout << "\033[2J\033[1;1H"; // screen cleaning
-        cout << "Hi! It will be like a game\n"
+        std::cout << "\033[2J\033[1;1H"; // screen cleaning
+        std::cout << "Hi! It will be like a game\n"
             << "U'll have a timer, u'll know\n"
             << "how much mistakes and correct\n"
-            << "answers u've given.\n" << endl;
+            << "answers u've given.\n" << std::endl;
 		
         game();
 
-		cout << "Do u wanna continue work "
+        std::cout << "Do u wanna continue work "
 			<< "with this menu point [1] "
 			<< "| exit [0]: ";
-		cin >> proceed;
+        std::cin >> proceed;
 
-		if (proceed != '1')
-			cout << "Work with file was ended";
-	} while (proceed == '1');
+		if (proceed != '1') std::cout << "Work with file was ended";
+	} 
+    while (proceed == '1');
 
 	return 0;
 }

@@ -4,47 +4,48 @@
 # include <vector>
 # include "main.h"
 
-using namespace std; 
-
 struct Word {
-	string word;
-	string translation;
-	string date;
+	std::string word;
+	std::string translation;
+	std::string date;
 };
 
-bool existsUA(const string& word);
-bool existsEN(const string& word);
+bool existsUA(const std::string& word);
+bool existsEN(const std::string& word);
 
 int append() {
 	char proceed;
-	do {
-		vector <Word> vocabular;
-		ofstream file("Vocabulary.txt", ios::app);
-		if (!file) {
-			cout << "Error: some problems with file";
+	do 
+	{
+		std::vector <Word> vocabular;
+		std::ofstream file("Vocabulary.txt", std::ios::app);
+		if (!file) 
+		{
+			std::cout << "Error: some problems with file";
 			return 1;
 		}
 
 		Word data;
-		cin.ignore(
-			numeric_limits
-			<streamsize>
+		std::cin.ignore(
+			std::numeric_limits
+			<std::streamsize>
 			::max(), 
 			'\n'
 		); // to clear "cin" data
-		cout << "Write the word/phrase/ediome in ukrainian: ";
-		getline(cin, data.word);
-		cout << "Write the translation in english: ";
-		getline(cin, data.translation);
-		cout << "Write todays date\n"
+		std::cout << "Write the word/phrase/ediome in ukrainian: ";
+		std::getline(std::cin, data.word);
+		std::cout << "Write the translation in english: ";
+		std::getline(std::cin, data.translation);
+		std::cout << "Write todays date\n"
 			<< "(write like dd.MM.yyyy or kinda like this): ";
-		cin >> data.date;
+		std::cin >> data.date;
 		vocabular.push_back(data);
 
 		if (existsUA(data.word) && existsEN(data.translation))
-			cout << "This word already exists" << endl;
+			std::cout << "This word already exists" << std::endl;
 
-		else {
+		else 
+		{
 			for (auto i : vocabular)
 				file << "UA: \""
 				<< i.word
@@ -52,37 +53,37 @@ int append() {
 				<< i.translation
 				<< "\". Date: "
 				<< i.date
-				<< endl;
+				<< std::endl;
 		}
 
 		file.close();
 
-		cout << "Do u wanna continue work "
+		std::cout << "Do u wanna continue work "
 			<< "with this menu point [1] "
 			<< "| exit [0]: ";
-		cin >> proceed;
-		if (proceed != '1')
-			cout << "Work with file was ended" << endl;
+		std::cin >> proceed;
+		if (proceed != '1') std::cout << "Work with file was ended" << std::endl;
 
-	} while (proceed == '1');
+	} 
+	while (proceed == '1');
 
 	return 0;
 }
 
-bool existsUA(const string& word) {
-	ifstream file("Vocabulary.txt");
-	string line;
-	while (getline(file, line))
-		if (line.find("UA: \"" + word + "\"") != string::npos)
+bool existsUA(const std::string& word) {
+	std::ifstream file("Vocabulary.txt");
+	std::string line;
+	while (std::getline(file, line))
+		if (line.find("UA: \"" + word + "\"") != std::string::npos)
 			return true;
 	return false;
 }
 
-bool existsEN(const string& word) {
-	ifstream file("Vocabulary.txt");
-	string line;
-	while (getline(file, line))
-		if (line.find("EN: \"" + word + "\"") != string::npos)
+bool existsEN(const std::string& word) {
+	std::ifstream file("Vocabulary.txt");
+	std::string line;
+	while (std::getline(file, line))
+		if (line.find("EN: \"" + word + "\"") != std::string::npos)
 			return true;
 	return false;
 }

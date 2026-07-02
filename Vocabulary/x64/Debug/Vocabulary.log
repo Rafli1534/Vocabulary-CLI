@@ -1,6 +1,11 @@
-﻿  main.cpp
+﻿  apend.cpp
+  del.cpp
+  main.cpp
+  read.cpp
+  redact.cpp
+  search.cpp
   test.cpp
-C:\Users\6461\workspace\my_works\cpp\Vocabulary\test.cpp(12,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\6461\workspace\my_works\cpp\Vocabulary\test.cpp(82,8): warning C4101: ready: неиспользованная локальная переменная
-  Создание кода...
+C:\Users\6461\workspace\my_works\cpp\Vocabulary\test.cpp(11,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\6461\workspace\my_works\cpp\Vocabulary\test.cpp(89,8): warning C4101: 'ready': unreferenced local variable
+  Generating Code...
   Vocabulary.vcxproj -> C:\Users\6461\workspace\my_works\cpp\Vocabulary\x64\Debug\Vocabulary.exe

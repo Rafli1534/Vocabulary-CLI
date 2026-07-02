@@ -7,69 +7,73 @@
 
 # include "main.h"   // to work with read.cpp
 
-using namespace std; // to make code easier to write
-
-int redact() {
+int redact() 
+{
     char proceed;
-    do {
-        string filename = "Vocabulary.txt";
-        string tmpname = "tmp.txt";
-        ifstream file(filename);
-        if (!file) {
-            cout << "Error: no such file";
+    do 
+    {
+        std::string filename = "Vocabulary.txt";
+        std::string tmpname = "tmp.txt";
+        std::ifstream file(filename);
+        if (!file) 
+        {
+            std::cout << "Error: no such file";
             return 1;
         }
 
-        string word_to_redact;
-        cout << "Write the word u wanna redact: ";
-        cin.ignore();
-        getline(cin, word_to_redact);
+        std::string word_to_redact;
+        std::cout << "Write the word u wanna redact: ";
+        std::cin.ignore();
+        std::getline(std::cin, word_to_redact);
 
-        string show_line;
-        while (getline(file, show_line)) {
-            if (show_line.find(word_to_redact) != string::npos) {
-                cout << show_line << endl;
-            }
-        }
-        cout << endl;
+        std::string show_line;
+        while (std::getline(file, show_line)) 
+            if (show_line.find(word_to_redact) != std::string::npos) 
+                std::cout << show_line << std::endl;
+        std::cout << std::endl;
 
         file.close();
 
-        string search, replace;
-        cout << "Write the word u wanna redact: ";
-        getline(cin, search);
-        cout << "Write what u wanna print there: ";
-        getline(cin, replace);
+        std::string search, replace;
+        std::cout << "Write the word u wanna redact: ";
+        std::getline(std::cin, search);
+        std::cout << "Write what u wanna print there: ";
+        std::getline(std::cin, replace);
 
-        ifstream file2(filename);
-        ofstream tmp(tmpname);
-        string line;
-        while (getline(file2, line)) {
+        std::ifstream file2(filename);
+        std::ofstream tmp(tmpname);
+        std::string line;
+        while (std::getline(file2, line)) 
+        {
             size_t pos = 0;
-            while ((pos = line.find(search, pos)) != string::npos) {
+            while ((pos = line.find(search, pos)) != std::string::npos) 
+            {
                 line.replace(pos, search.length(), replace);
                 pos += replace.length();
             }
-            tmp << line << endl;
+            tmp << line << std::endl;
         }
 
         file2.close();
         tmp.close();
 
-        if (remove(filename.c_str()) != 0) {
-            cout << "Error with removing original file" << endl;
-            return 1;
-        }
-        if (rename(tmpname.c_str(), filename.c_str()) != 0) {
-            cout << "Error renaming temporary file" << endl;
+        if (remove(filename.c_str()) != 0) 
+        {
+            std::cout << "Error with removing original file" << std::endl;
             return 1;
         }
 
-        cout << "Do u wanna continue work [1] | exit [0]: ";
-        cin >> proceed;
-        if (proceed != '1')
-            cout << "Work with file was ended";
-    } while (proceed == '1');
+        if (rename(tmpname.c_str(), filename.c_str()) != 0) 
+        {
+            std::cout << "Error renaming temporary file" << std::endl;
+            return 1;
+        }
+
+        std::cout << "Do u wanna continue work [1] | exit [0]: ";
+        std::cin >> proceed;
+        if (proceed != '1') std::cout << "Work with file was ended";
+    } 
+    while (proceed == '1');
 
     return 0;
 }
