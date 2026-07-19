@@ -1,10 +1,11 @@
-# include <iostream> // to work with console
-# include <fstream>  // to work with files
-# include <string>   // to work with string
-# include <cstdio>   // for remove() and rename()
-# include "main.h"   // to work with the main.cpp
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <cstdio>
+# include <limits>
+# include "main.h"
 
-int del() 
+int del()
 {
     char proceed;
     do 
@@ -26,11 +27,13 @@ int del()
         std::getline(std::cin, word);
 
         bool found = false;
-        while (getline(input, line)) 
-        {
-            if (line.find(word) == std::string::npos)
+        while (getline(input, line)) {
+            if (line.find(word) == std::string::npos) {
                 temp << line << std::endl;
-            else found = true;
+            }
+            else {
+                found = true;
+            }
         }
 
         input.close();
